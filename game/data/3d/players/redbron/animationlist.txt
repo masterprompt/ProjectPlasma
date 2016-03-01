@@ -1,0 +1,9 @@
+RunNormal=ExtractAnimSeq (redguy,0,18);sequence 1
+still=ExtractAnimSeq (redguy,19,19);sequence 2
+stillfire=ExtractAnimSeq (redguy,20,30);sequence 3
+Takehit=ExtractAnimSeq (redguy,31,45);sequence 4
+RunFire=ExtractAnimSeq (redguy,47,65);sequence 5
+Dying1=ExtractAnimSeq (redguy,65,75);sequence 6
+Dying2=ExtractAnimSeq (redguy,76,92);sequence 7
+Idle=ExtractAnimSeq (redguy,93,107);sequence 8
+

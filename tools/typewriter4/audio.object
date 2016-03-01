@@ -1,0 +1,10 @@
+type audio
+field ID%
+field audiotype%
+field filename$
+field track%
+field mode%
+field mood%
+end type
+max=64
+recycle=0

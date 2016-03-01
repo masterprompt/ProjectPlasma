@@ -1,0 +1,10 @@
+type sound
+field audioID%
+field channel%
+field volume#
+field pitch%
+field pan#
+field state%
+end type
+max=64
+recycle=0

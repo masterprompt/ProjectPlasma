@@ -1,0 +1,6 @@
+type log
+field ID%
+field logfile%
+end type
+max=10
+recycle=1

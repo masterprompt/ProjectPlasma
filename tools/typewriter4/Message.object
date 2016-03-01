@@ -1,0 +1,10 @@
+type Message
+field ID%
+field ClassTo%
+field ClassToID%
+field ClassFrom%
+field ClassFromID%
+field Content.Bank
+end type
+max=2000
+recycle=1

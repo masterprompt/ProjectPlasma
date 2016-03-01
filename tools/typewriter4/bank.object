@@ -1,0 +1,9 @@
+type bank
+field ID%
+field bankhandle%
+field readptr%
+field writeptr%
+field size%
+end type
+max=2000
+recycle=1

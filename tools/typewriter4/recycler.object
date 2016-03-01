@@ -1,0 +1,9 @@
+type recycler
+field ID%
+field datatype%
+field size%
+field PTR%
+field stack%
+end type
+max=256
+recycle=0

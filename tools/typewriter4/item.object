@@ -1,0 +1,13 @@
+type item
+field ID%
+field filename%
+field entity%
+field effect%
+field effecttarget%
+field effectduration%
+field effectvalue%
+field respawn%
+field respawndelay%
+end type
+max=1
+recycle=0

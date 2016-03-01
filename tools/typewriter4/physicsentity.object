@@ -1,0 +1,24 @@
+type physicsentity
+field ID%
+field pivot%
+field entity%
+field x#
+field y#
+field z# 
+field vx#
+field vy#
+field vz# 
+field ax#
+field ay#
+field az# 
+field radius#
+field bounce#
+field vel#
+field vx2#
+field vy2#
+field vz2#
+field friction#
+field force#
+End type
+max=1
+recycle=1

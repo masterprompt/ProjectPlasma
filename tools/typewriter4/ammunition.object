@@ -1,0 +1,25 @@
+type ammunition
+field ID%
+field loadreactorID%
+field firereactorID%
+field travelreactorID%
+field impactreactorID%
+field loadsoundID%
+field firesoundID%
+field travelsoundID%
+field impactsoundID%
+field recyclerID%
+field filename$
+field entitytype%
+field entity%
+field range#
+field traveltype%
+field effect%
+field effecttarget%
+field effectduration%
+field effectarea%
+field effectvalue%
+field effectdecay#
+end type
+max=32
+recycle=0

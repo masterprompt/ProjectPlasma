@@ -1,0 +1,18 @@
+type Client
+field ID%
+field TCPStream%
+Field UDPStream%
+field TCPPort%
+field UDPPort%
+field ServerInt_IP%
+field ServerDot_IP$
+field Mode%
+field Status%
+field LastRecieved%
+field RetryCnt%
+field RetryMax%
+field ClientName$
+field Stream.bank
+end type
+max=5
+recycle=1

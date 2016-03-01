@@ -1,0 +1,11 @@
+type projectile
+field ID%
+field ammunitionID%
+field entity%
+field rangeCTR#
+field effectdecayCTR#
+field traveltarget%
+field state%
+end type
+max=256
+recycle=1

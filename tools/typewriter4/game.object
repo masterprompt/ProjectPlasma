@@ -1,0 +1,12 @@
+type game
+field rootdirectory$
+field screenwidth%
+field screenheight%
+field screendepth%
+field screenmode%
+field musicvolume#
+field soundvolume#
+field playmode%
+end type
+max=1
+recycle=0

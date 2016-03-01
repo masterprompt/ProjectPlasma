@@ -1,0 +1,11 @@
+type map
+field ID%
+field filename$
+field entity%
+field terrainheightfile$
+field terrain%
+field skymapfile$
+field sky%
+end type
+max=1
+recycle=0

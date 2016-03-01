@@ -1,0 +1,13 @@
+type gun
+field weaponID%
+field entity%
+field projectilesCTR%
+field chargeupCTR#
+field recoilCTR#
+field coolingCTR#
+field triggerdelayCTR#
+field reloadspeedCTR#
+field state%
+end type
+max=16
+recycle=0

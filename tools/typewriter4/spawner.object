@@ -1,0 +1,8 @@
+type spawner
+field itemID%
+field entity%
+field respawnCTR%
+field state%
+end type
+max=64
+recycle=1

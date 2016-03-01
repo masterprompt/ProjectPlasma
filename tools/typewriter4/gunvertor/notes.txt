@@ -1,0 +1,57 @@
+A FPS Concept FireArm weapon comprised of interchangeable upgradeable components. The components can be assembled into virtually a countless assortment of weapon designs or used for specific set of static weapon designs. Each component effects the player, weapon, and ammo in a specific manner. 
+
+Chamber
+
+The Chamber is the Weapon Core Component in which all other components attach. 
+
+Barrel
+
+Projects and directs ammunition. Barrels effect ammunition range and dispersion. Long Barrels produce long range/ narrow dispersion; Shorter Barrel produces short range/wide dispersion. Barrels also provide a ‘heat sinking’ for the weapon. 
+
+Loader
+
+Can be attached to the barrel or magazine. Loads ammunition with Hand2 (grip02). Animated.
+
+Trigger
+
+Control mechnism that activates Firing Unit/Mechanism. The Trigger determines how the user can fire the weapon. A weapon can posses multiple triggers.
+
+FireUnit
+
+Unit This component provides motivational charge to a ammunition. High Quality Firing Units can project charge fast and project ammunition a great speeds long distances. 
+
+StockGrip
+
+Absorbs Player Recoil. Recoil can effect weapon handling and accuracy. High Quality Stocks can absorbs greater amounts of recoil. Handgrip attaches to player (grip01). 
+
+Magazine
+
+Magazine \ PowerCell \ Canister are storage components. These components effect Ammunition Refill/Recharge, Loading Speed and Storage Quantity 
+
+AmmoMeter
+
+A 3D Graphic Display for Ammo Count associated with the magazine.
+
+Scope
+
+The accessory component assist in visibility of the target (ie: Zoom, Infrared, Thermovision)
+
+Sight + Cursor
+
+This accessory component assist in targeting object. Displays Targeting Cursor.
+
+Distorter
+
+This accessory attaches to the barrel of the weapon to muffle sound of Solid Ammunitions or change the visual characteristics of Energy Ammunitions. 
+
+Bayonet 
+
+This accessory attaches to the barrel of the weapon and can be used as melee weapon
+
+Connectivity
+Pivot points for component connectivity is provided within the geometery.
+
+Animation
+	idle
+	active
+	

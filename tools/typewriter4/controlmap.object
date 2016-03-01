@@ -1,0 +1,17 @@
+type controlmap
+field ID%
+field mouselookx%
+field mouselooky%
+field mousez%
+field forward%
+field backward%
+field strafeleft%
+field straferight%
+field jump%
+field duck%
+field gunselect%
+field gunfire%
+field gunzoom%
+end type
+max=1
+recycle=0

@@ -1,0 +1,14 @@
+type light
+field entity%
+field lighttype%
+field range#
+field innerangle#
+field outerangle#
+field red#
+field green#
+field blue#
+field lifeCTR%;
+field state%
+end type
+max=8
+recycle=1

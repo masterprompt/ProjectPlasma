@@ -1,0 +1,202 @@
+;============================
+;PROJECTILE CLASS
+;Generated with TypeWriterIV
+;============================
+
+;============================
+;INCLUDES
+;============================
+
+;============================
+;CONSTANTS
+;============================
+Const PROJECTILE_MAX%=1
+
+;============================
+;GLOBALS
+;============================
+Global projectile_ID.projectile[PROJECTILE_MAX%];Primary Key Object Pointer
+Global projectile_Index%[PROJECTILE_MAX%], projectile_IndexPointer%;Primary Key ID Management Stack
+
+;============================
+;ARRAYS
+;============================
+
+;============================
+;OBJECT
+;============================
+Type projectile
+	;Purpose: 
+	;Properties:
+	Field ID%;
+	Field energy%;
+	Field detonatetype%;
+End Type
+
+;============================
+;METHODS
+;============================
+Function projectileStart()
+	;Purpose: Initialize Class
+	;Parameters: TBD
+	;Return: None
+	For projectileloop=PROJECTILE_MAX To 1 Step -1; Initialize Primary Key ID Management Stack
+		projectileIndexPush(projectileloop)
+	Next
+End Function
+
+Function projectileStop()
+	;Purpose: Shutdown Class
+	;Parameters: TBD
+	;Return: None
+	For this.projectile=Each projectile
+		projectileDelete(this)
+	Next
+End Function
+
+Function projectileNew.projectile()
+	;Purpose: CONSTRUCTOR - Creates projectile Instance; Sets Default Property Values
+	;Parameters: TBD
+	;Return: projectile Instance
+	this.projectile=New projectile
+	this\ID%=0
+	this\energy%=0
+	this\detonatetype%=0
+	this\id%=projectileIndexPop()
+	projectile_ID[this\id%]=this
+	Return this
+End Function
+
+Function projectileDelete(this.projectile)
+	;Purpose: DESTRUCTOR - Removes projectile Instance
+	;Parameters: projectile Instance
+	;Return: None
+	projectile_ID[this\id]=Null
+	projectileIndexPush(this\id%)
+	Delete this
+End Function
+
+Function projectileUpdate()
+	;Purpose: Main Loop Update. Updates all projectile Instances.
+	;Parameters: None
+	;Return: None
+	For this.projectile=Each projectile
+		;Do stuff to 'this' here!
+	Next
+End Function
+
+Function projectileWrite(this.projectile,projectilefile)
+	;Purpose: Writes projectile Property Values to File
+	;Parameters: projectile Instance, projectilefile=filehandle
+	;Return: None
+	WriteInt(projectilefile,this\ID%)
+	WriteInt(projectilefile,this\energy%)
+	WriteInt(projectilefile,this\detonatetype%)
+End Function
+
+Function projectileRead.projectile(projectilefile)
+	;Purpose: Reads File To projectile Property Values
+	;Parameters: projectilefile=filehandle
+	;Return: projectile Instance
+	this.projectile=New projectile
+	this\ID%=ReadInt(projectilefile)
+	this\energy%=ReadInt(projectilefile)
+	this\detonatetype%=ReadInt(projectilefile)
+	projectileIndexPop()
+	projectile_ID[this\id%]=this
+	Return this
+End Function
+
+Function projectileSave(projectilefilename$="projectile.dat")
+	;Purpose: Saves all Object Properties to a file
+	;Parameters: projectilefilename$= Name of File
+	;Return: None
+	projectilefile=WriteFile(projectilefilename$)
+	For this.projectile= Each projectile
+		projectileWrite(this,projectilefile)
+	Next
+	CloseFile(projectilefile)
+End Function
+
+Function projectileOpen(projectilefilename$="projectile.dat")
+	;Purpose: Opens a Object Property file
+	;Parameters: projectilefilename$=Name of Property File
+	;Return: None
+	projectilefile=ReadFile(projectilefilename$)
+	Repeat
+		projectileRead(projectilefile)
+	Until Eof(projectilefile)
+	CloseFile(projectilefile)
+End Function
+
+Function projectileCopy.projectile(this.projectile)
+	;Purpose: Creates a Copy of a projectile Instance
+	;Parameters: projectile Instance
+	;Return: Copy of projectile Instance
+	copy.projectile=projectileNew()
+	copy\ID%=this\ID%
+	copy\energy%=this\energy%
+	copy\detonatetype%=this\detonatetype%
+	Return copy
+End Function
+
+Function projectileMimic(this.projectile,mimic.projectile)
+	;Purpose: Copies Property Values from one projectile Instance To another
+	;Parameters: projectile Instance
+	;Return: None
+	mimic\ID%=this\ID%
+	mimic\energy%=this\energy%
+	mimic\detonatetype%=this\detonatetype%
+End Function
+
+Function projectileCreate%(projectileID%,projectileenergy%,projectiledetonatetype%)
+	;Purpose: Creates an Object and returns it ID
+	;Parameters: Object's Properties
+	;Return: Object's ID%
+	this.projectile=projectileNew()
+	this\ID%=projectileID%
+	this\energy%=projectileenergy%
+	this\detonatetype%=projectiledetonatetype%
+	Return this\id
+End Function
+
+Function projectileDestroy(projectileid%)
+	;Purpose: Remove object by ID
+	;Parameters: projectileid%=Object's ID
+	;Return: None
+	projectileDelete(projectile_ID[projectileid%])
+End Function
+
+Function projectileSet(this.projectile,projectileID%,projectileenergy%,projectiledetonatetype%)
+	;Purpose: Set projectile Property Values
+	;Parameters: projectile Instance and Properties
+	;Return: None
+	this\ID%=projectileID%
+	this\energy%=projectileenergy%
+	this\detonatetype%=projectiledetonatetype%
+End Function
+
+Function projectileIndexPush(projectileid%)
+	;Purpose: Pushes ID into Primary Key ID Management Stack
+	;Parameters: projectileid=Object's ID
+	;Return: None
+	projectile_Index[projectile_IndexPointer]=projectileid%
+	projectile_IndexPointer=projectile_IndexPointer+1
+End Function
+
+Function projectileIndexPop()
+	;Purpose: Pops ID out of Primary Key ID Management Stack
+	;Parameters: None
+	;Return: Object ID%
+	projectile_IndexPointer=projectile_IndexPointer-1
+	Return projectile_Index[projectile_IndexPointer]
+End Function
+
+Function projectileMethod.projectile(this.projectile)
+	;Purpose: Method Template
+	;Parameters: TBD
+	;Return: TBD
+	;code stuff here...
+	Return this
+End Function
+

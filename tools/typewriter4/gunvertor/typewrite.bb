@@ -1,0 +1,13 @@
+Include "..\typeWriter4.bb"
+typewriter("barrel")
+typewriter("bayonet")
+typewriter("chamber")
+typewriter("distorter")
+typewriter("fireunit")
+typewriter("loader")
+typewriter("magazine")
+typewriter("meter")
+typewriter("scope")
+typewriter("sight")
+typewriter("stockgrip")
+typewriter("trigger")

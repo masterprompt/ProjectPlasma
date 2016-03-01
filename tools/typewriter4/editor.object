@@ -1,0 +1,9 @@
+type editorobject
+field ID%
+field name$
+field properties%
+field propertyname$[256]
+field propertyvalue$[256]
+End type
+max=256
+recycle=1

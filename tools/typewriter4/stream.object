@@ -1,0 +1,14 @@
+type Connection
+field ID%
+field Mode%
+field Ping%
+field Int_IP%
+field Dot_IP$
+field TCPStream%
+field UDPStream%
+field TCPPort%
+field UDPPort%
+field LastRecieved%
+end type
+max=500
+recycle=1

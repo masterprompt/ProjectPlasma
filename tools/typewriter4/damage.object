@@ -1,0 +1,8 @@
+type damage
+type damagefxID%
+field target%
+field durationCTR#
+field decayCTR#
+end type
+max=16
+recycle=0

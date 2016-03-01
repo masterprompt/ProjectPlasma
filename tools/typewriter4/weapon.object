@@ -1,0 +1,16 @@
+type weapon
+field ID%
+field ammunitionID%
+field chargeupSoundID%
+field filename$
+field entity%
+field projectiles%
+field chargeup#
+field recoil#
+field cooling#
+field trigger%
+field triggerdelay#
+field reloadspeed#
+end type
+max=16
+recycle=0

@@ -1,0 +1,13 @@
+type imagemap
+field id%
+field name$
+field x#
+field y#
+field imgsrc$
+field image%
+field hotspots%
+field hotspot.hotspot[64]
+field state%
+end type
+max=32
+recycle=0

@@ -1,0 +1,12 @@
+type damagefx
+field ID%
+field effect%
+field name$
+field targettype%
+field duration#
+field value#
+field decay#
+field area%
+end type
+max=16
+recycle=0

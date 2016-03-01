@@ -1,0 +1,11 @@
+type player
+field ID%
+field characterID%
+field controlmapID%
+field camera.camera
+field gun.gun[2]
+field entity%
+field state%
+end type
+max=16
+recycle=1

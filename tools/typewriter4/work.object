@@ -1,0 +1,8 @@
+type projectile
+field ID%
+field energy%
+field detonatetype%
+end type
+max=1
+recycle=1
+

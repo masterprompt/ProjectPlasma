@@ -1,0 +1,8 @@
+type particle
+field reactorID%
+field entity%
+field lifeCTR#
+field state%
+end type
+max=256
+recycle=1

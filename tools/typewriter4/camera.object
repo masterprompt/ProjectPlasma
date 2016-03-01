@@ -1,0 +1,6 @@
+type camera
+field id%
+field entity%
+end type
+max=1
+recycle=0

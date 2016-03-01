@@ -1,0 +1,10 @@
+type hotspot
+field ID%
+field typeID%
+field coord%[3]
+field target$
+field command$
+field state%
+end type
+max=256
+recycle=0

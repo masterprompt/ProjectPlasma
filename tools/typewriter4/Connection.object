@@ -1,0 +1,19 @@
+type Connection
+field ID%
+field TCPStream%
+Field UDPStream%
+field TCPPort%
+field UDPPort%
+field Int_IP%
+field Dot_IP$
+field Mode%
+field Ping%
+field Status%
+field LastRecieved%
+field TCPReadState%
+field UDPReadState%
+field ClientName$
+field Stream.bank
+end type
+max=500
+recycle=1

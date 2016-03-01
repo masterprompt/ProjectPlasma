@@ -1,0 +1,131 @@
+;Probably should make  common library for these types
+
+Type Vector
+	Field X#, Y#, Z#
+End Type
+
+
+;Load our gun model as animmesh so it keeps heirarchy, this is so you can do your custom
+;pivots in the file, it will be a 2 sec retro fit, i will show you later on this
+Gun = LoadAnimMesh("mygun.b3d")
+
+;Create the pivot and parent it to the gun
+Pivot = CreatePivot(gun)
+
+;Create some ammow
+Ammo = CreatePivot()
+
+;Place the gun on the model or whever you want it
+PositionEntity(gun, whereverx, wherevery, whereverz)
+
+;positions the pivot at gun, this is incase you load pivot after you have already placed the gun
+; safe to do it anyway
+PositionEntity(pivot, EntityX(gun,1), EntityY(gun,1), EntityZ(gun,1))
+
+;moves the pivot along the guns local coordinates to the front of the gun (well, 1 unit forward
+; the gun)
+MoveEntity(pivot,0,0,1)
+
+;Now comes the fun stuff!
+;In the update loop, we do the following to ammo
+;===== start update loop
+;if we are firing, place ammo at gun
+PositionEntity(ammo, EntityX(gun,1), EntityY(gun,1), EntityZ(gun,1))
+;point it at pivot
+PointEntity(ammo, pivot)
+
+;move it to pivot so it doesnt appear in middle of gun, but we had to first place it at
+;gun so we could point it at pivot to get our correct direction
+PositionEntity(ammo,EntityX(pivot,1), EntityY(pivot,1), EntityZ(pivot,1))
+
+;Get our direction from pivot to gun
+GunV.Vector = New vector
+GunV\X# =EntityX(gun,1) 
+GunV\Y# =EntityY(gun,1)
+GunV\Z# =EntityZ(gun,1)
+PivV.Vector = New vector
+PivV\X# =EntityX(pivot,1) 
+PivV\Y# =EntityY(pivot,1)
+PivV\Z# =EntityZ(pivot,1)
+Dir.vector = GetDirection.vector(GunV.Vector, PivV.Vector)
+
+;So we have our direction the ammo will be moving
+;Now we need to normalize it so it is in a workable size (Ie we can multiply
+; it by how many units per frame we want it to move)
+Dist# = GetDistance#(Dir.Vector)
+NV.Vector =GetNormalVector.vector(Dir.Vector, Dist#) 
+
+
+;====================Ammo update loop
+		;For each loop move the ammo 10 units
+		PositionEntity(ammo, NV\X# * 10 , NV\Y# * 10 , NV\Z# * 10 ) 
+;====================end ammo update loop
+
+;==== end update loops
+
+
+
+;=================================================Functions==============================
+;Returns the direction from one entity to another based on position coordinates
+Function GetDirection.vector(G.Vector, P.Vector)
+	Dir.Vector = New Vector
+	Dir\X# = P\X# - G\X#
+	Dir\Y# = P\Y# - G\Y#
+	Dir\Z# = P\Z# - G\Z#
+	Return Dir.Vector
+End Function
+
+;Returns the Distance of a direction, otherwise called magnitude
+;So if something moved (x,y,z) (4,6,1) the total distance it moved is 7.2801 units
+Function GetDistance#(Dir.Vector)
+	Return Sqr( (Dir\X# * Dir\X#) + (Dir\Y# * Dir\Y#) + (Dir\Z# * Dir\Z#) )
+End Function
+
+;This returns a normalized vector based on direction and distance.  The distance in the function
+;example above  would com out of this function as (0.5494 , 0.8241 , 0.1373)
+; this is the direction of whatever from whatever, but in terms we can use (less than 1)
+Function GetNormalVector.vector(Dir.Vector, D#)
+	Normal.Vector = New Vector
+	Normal\X# = Dir\X# / D#
+	Normal\Y# = Dir\Y# / D#
+	Normal\Z# = Dir\Z# / D#
+	Return Normal.Vector
+End Function
+
+
+
+
+Function CenterMesh(Mesh)
+	Local Surfaces, Surface, FirstTrig=0
+	Surfaces = CountSurfaces(mesh)
+	For S = 1 To Surfaces
+		Surface=GetSurface(mesh,S)
+		For Vert = 0 To CountVertices(Surface)-1
+			If FirstTrig = 0 Then
+				MinX# = VertexX#(Surface,Vert)
+				MaxX# = VertexX#(Surface,Vert)
+				MinY# = VertexY#(Surface,Vert)
+				MaxY# = VertexY#(Surface,Vert)
+				MinZ# = VertexZ#(Surface,Vert)
+				MaxZ# = VertexZ#(Surface,Vert)
+				FirstTrig = 1								
+			End If
+			X# = VertexX#(Surface,Vert)
+			Y# = VertexY#(Surface,Vert)
+			Z# = VertexZ#(Surface,Vert)
+			If X# > MaxX Then MaxX# = X#
+			If X# < MinX Then MinX# = X#
+			If Y# > MaxY Then MaxY# = Y#
+			If Y# < MinY Then MinY# = Y#
+			If Z# > MaxZ Then MaxZ# = Z#
+			If Z# < MinZ Then MinZ# = Z#
+		Next
+	Next
+	DX# = MinX#+ (MaxX# - MinX#)/2.0
+	DY# = MinY#+ (MaxY# - MinY#)/2.0
+	DZ# = MinZ#+ (MaxZ# - MinZ#)/2.0
+	PositionMesh(Mesh,-DX#,-DY#,-DZ#)
+End Function
+
+
+
